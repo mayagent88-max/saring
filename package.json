@@ -1,0 +1,1 @@
+{"dependencies":{"firebase":"^13.0.0"},"description":"Saring — cek link/pesan mencurigakan. On-device Gemini Nano dulu (privat, instan), fallback cloud Gemini Flash kalau perlu. #BuildHybridAI 2026.","devDependencies":{"vite":"^6.0.0"},"name":"saring","private":true,"scripts":{"build":"vite build","dev":"vite","preview":"vite preview"},"type":"module","version":"0.1.0"}

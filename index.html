@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saring — Cek Link &amp; Pesan Mencurigakan</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+      textarea { width: 100%; min-height: 96px; }
+      button { padding: 0.6rem 1rem; margin-top: 0.5rem; cursor: pointer; }
+      #result { margin-top: 1rem; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; display: none; }
+      .level-aman { border-left: 6px solid #2e7d32; }
+      .level-waspada { border-left: 6px solid #ed6c02; }
+      .level-bahaya { border-left: 6px solid #c62828; }
+      .source { font-size: 0.85rem; color: #555; }
+    </style>
+  </head>
+  <body>
+    <h1>Saring</h1>
+    <p>Tempel URL atau pesan mencurigakan. Dicek dulu <b>di perangkatmu sendiri</b> (Gemini Nano, privat) — kalau perangkatmu tidak bisa, baru lari ke cloud.</p>
+    <textarea id="input" placeholder="https://contoh-link-mencurigakan.xyz atau isi pesan..."></textarea>
+    <br />
+    <button id="check">Cek sekarang</button>
+    <button id="deep" disabled>Analisis dalam (cloud)</button>
+    <div id="result"></div>
+    <pre id="deepResult" style="white-space: pre-wrap; display: none"></pre>
+    <script type="module">
+      import { quickCheck, deepCheck } from "./src/main.js";
+      const input = document.getElementById("input");
+      const result = document.getElementById("result");
+      const deepBtn = document.getElementById("deep");
+      const deepResult = document.getElementById("deepResult");
+
+      document.getElementById("check").addEventListener("click", async () => {
+        const text = input.value.trim();
+        if (!text) return;
+        result.style.display = "block";
+        result.className = "";
+        result.innerHTML = "Memeriksa di perangkat...";
+        try {
+          const v = await quickCheck(text);
+          result.className = "level-" + v.level;
+          result.innerHTML =
+            `<h2>${v.level.toUpperCase()}</h2><p>${v.reason}</p>` +
+            `<p><b>Langkah aman:</b> ${v.safeAction}</p>` +
+            `<p class="source">Diperiksa ${v.source === "ON_DEVICE" ? "di perangkat (privat, tidak keluar dari Chrome)" : "di cloud (fallback)"}.</p>`;
+          deepBtn.disabled = false;
+        } catch (e) {
+          result.innerHTML = "Gagal memeriksa: " + e.message;
+        }
+      });
+
+      deepBtn.addEventListener("click", async () => {
+        deepResult.style.display = "block";
+        deepResult.textContent = "Menganalisis di cloud... (teks ini dikirim ke cloud)";
+        try {
+          const d = await deepCheck(input.value.trim());
+          deepResult.textContent = d.report;
+        } catch (e) {
+          deepResult.textContent = "Gagal: " + e.message;
+        }
+      });
+    </script>
+  </body>
+</html>
