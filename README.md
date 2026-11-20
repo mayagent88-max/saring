@@ -16,12 +16,11 @@ Gemini Flash untuk laporan panjang.
 
 - [x] Ide + spek di `~/workspace/tia/projects/buildhybridai-2026.md`
 - [x] Skeleton app ini (UI + routing hybrid + output JSON terstruktur)
-- [ ] Firebase project + AI Logic + Gemini Developer API (langkah 1, console)
-- [ ] App Check debug token (langkah 1)
-- [ ] Repo GitHub publik + push (langkah 2, token klasik `tia` sudah
-      terverifikasi 19 Nov bisa bikin repo via API)
-- [ ] `npm install` + smoke test on-device di Chromium lokal (v157, ≥139)
-- [ ] Build 21–24 Nov, poles 25–27, video + submit 28–29 Nov
+- [x] Firebase project `saring-5f614` (Spark gratis, tanpa billing) + AI Logic + Gemini Developer API (20 Nov ~11:04 WIB, via browser)
+- [x] App Check debug token `saring-local-dev` (20 Nov, aktif di `src/main.js` untuk dev lokal)
+- [x] Repo GitHub publik `mayagent88-max/saring` + push (20 Nov)
+- [x] `npm install` + `npm run build` lolos (20 Nov)
+- [ ] Smoke test live inference: halaman jalan, tapi `quickCheck` gagal dari mesin ini — endpoint Firebase AI Logic (`firebasevertexai.googleapis.com`) DIBLOKIR kebijakan egress VM (policy_denied, jangan di-retry). On-device Nano belum siap di Chromium ini. Verifikasi live butuh Chrome tanpa blokir egress (perangkat aa / mesin lain). Build 21–24 Nov tetap jalan; test ulang di sana.
 
 ## 1. Firebase project (console, ~10 menit)
 

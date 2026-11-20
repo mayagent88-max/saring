@@ -1,11 +1,10 @@
-// ISI DARI FIREBASE CONSOLE setelah project dibuat (lihat README.md langkah 1).
-// Jangan commit config berisi kunci sensitif ke repo lain; config web Firebase
-// ini memang dirancang untuk dipakai di client, tapi tetap jangan sebar di luar repo.
+// Config dari Firebase Console (project saring-5f614, Spark gratis).
+// Config web Firebase memang dirancang untuk dipakai di client.
 export const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID",
+  apiKey: "AIzaSyDjiVVGfZ5lKIjGShxpKnMYu_NYSkfrwuA",
+  authDomain: "saring-5f614.firebaseapp.com",
+  projectId: "saring-5f614",
+  storageBucket: "saring-5f614.firebasestorage.app",
+  messagingSenderId: "773429242180",
+  appId: "1:773429242180:web:7c5e6235c69da4aa538f11",
 };
