@@ -17,7 +17,7 @@ Gemini Flash untuk laporan panjang.
 - [x] Ide + spek di `~/workspace/tia/projects/buildhybridai-2026.md`
 - [x] Skeleton app ini (UI + routing hybrid + output JSON terstruktur)
 - [x] Firebase project `saring-5f614` (Spark gratis, tanpa billing) + AI Logic + Gemini Developer API (20 Nov ~11:04 WIB, via browser)
-- [x] App Check debug token `saring-local-dev` (20 Nov, aktif di `src/main.js` untuk dev lokal)
+- [x] App Check debug token `saring-local-dev` (20 Nov, dev lokal via `.env`, TIDAK di-commit — lihat `src/main.js`)
 - [x] Repo GitHub publik `mayagent88-max/saring` + push (20 Nov)
 - [x] `npm install` + `npm run build` lolos (20 Nov)
 - [ ] Smoke test live inference: halaman jalan, tapi `quickCheck` gagal dari mesin ini — endpoint Firebase AI Logic (`firebasevertexai.googleapis.com`) DIBLOKIR kebijakan egress VM (policy_denied, jangan di-retry). On-device Nano belum siap di Chromium ini. Verifikasi live butuh Chrome tanpa blokir egress (perangkat aa / mesin lain). Build 21–24 Nov tetap jalan; test ulang di sana.
@@ -31,8 +31,7 @@ Gemini Flash untuk laporan panjang.
    Debug token diterima untuk submission hackathon.
 4. Project settings → Your apps → Web app → salin config ke
    `src/firebase-config.js`.
-5. Aktifkan debug token di `src/main.js` (hapus komentar di baris
-   `self.FIREBASE_APPCHECK_DEBUG_TOKEN = true`) hanya saat dev lokal.
+5. Debug token dev lokal: isi `VITE_APPCHECK_DEBUG_TOKEN` di file `.env` (tidak di-commit) — `src/main.js` membacanya otomatis.
 
 ## 2. Repo publik + push
 

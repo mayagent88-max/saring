@@ -8,11 +8,14 @@ import {
 import { firebaseConfig } from "./firebase-config.js";
 
 // Dev only: App Check debug token ("saring-local-dev", dibuat 20 Nov 2026).
-// Aktif hanya saat pengembangan lokal, JANGAN aktif di build produksi.
+// Token dibaca dari file .env lokal (VITE_APPCHECK_DEBUG_TOKEN) —
+// JANGAN commit token ke repo; .env sudah masuk .gitignore.
 // (Firebase AI Logic mewajibkan App Check; debug token diterima untuk
 // submission hackathon.)
-self.FIREBASE_APPCHECK_DEBUG_TOKEN =
-  "C644871E-0094-41F3-863D-99DE6A9C9EF0";
+if (import.meta.env.VITE_APPCHECK_DEBUG_TOKEN) {
+  self.FIREBASE_APPCHECK_DEBUG_TOKEN =
+    import.meta.env.VITE_APPCHECK_DEBUG_TOKEN;
+}
 
 const app = initializeApp(firebaseConfig);
 const ai = getAI(app, { backend: new GoogleAIBackend() });
